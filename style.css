@@ -164,6 +164,11 @@ footer span { color: var(--green-dark); }
   object-fit: contain;
 }
 
+.logo {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.3;
+}
 
 .word,
 .reading {
