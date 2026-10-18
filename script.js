@@ -568,8 +568,21 @@ function todayKey() {
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
 }
 function setToday() {
-  $('today').textContent = new Intl.DateTimeFormat('ko-KR', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'short' }).format(new Date());
+  const now = new Date();
+
+  const date = new Intl.DateTimeFormat('ko-KR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(now);
+
+  const weekday = new Intl.DateTimeFormat('ko-KR', {
+    weekday: 'short'
+  }).format(now);
+
+  $('today').textContent = `${date} (${weekday})`;
 }
+
 function updateCounts() {
   const wrongCount = Object.keys(wrong).length;
   $('wrongCount').textContent = wrongCount;
