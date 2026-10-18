@@ -146,3 +146,12 @@ footer span { color: var(--green-dark); }
   border-radius: 12px;
   object-fit: cover;
 }
+
+.complete-icon {
+  display: block;
+  width: 200px;
+  height: 100px;
+  margin: 0 auto;
+  border-radius: 20px;
+  object-fit: contain;
+}
