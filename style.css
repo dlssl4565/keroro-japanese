@@ -1,7 +1,7 @@
 :root {
   --page: #f3f7e9;
   --surface: #ffffff;
-  --surface-soft: #f8faF4;
+  --surface-soft: #f8faf4;
   --green: #9bcb50;
   --green-dark: #4b852f;
   --green-deep: #30452c;
@@ -15,12 +15,17 @@
   --shadow: 0 16px 45px rgba(53, 81, 38, .09);
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+  font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
   color: var(--green-deep);
   background: radial-gradient(ellipse at 90% 5%, rgba(245, 231, 168, .35), transparent 28rem), var(--page);
+  font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 }
 
 button { font: inherit; }
@@ -31,21 +36,34 @@ button:focus-visible { outline: 3px solid #d3a91f; outline-offset: 3px; }
 .brand { justify-content: flex-start; gap: 12px; }
 .brand-mark { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 17px; background: var(--green-pale); font-size: 27px; }
 
-
 .logo {
-  font-size: 25px;
-  font-weight: 400;
+  font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
   line-height: 1.3;
 }
 
-.logo small { display: block; margin-top: 5px; color: var(--muted); font: 12px "Gowun Dodum", sans-serif; }
+.logo small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+}
+
 .date { color: var(--muted); font-size: 13px; }
 .hero { margin-bottom: 27px; }
 .eyebrow { margin: 0 0 8px; color: var(--green-dark); font-size: 10px; font-weight: bold; letter-spacing: .15em; }
 h1, h2, h3, p { margin-top: 0; }
 
+h1 {
+  margin-bottom: 10px;
+  font-size: clamp(27.5px, 5.7vw, 40px);
+  line-height: 1.28;
+  letter-spacing: -.03em;
+}
 
-h1 { margin-bottom: 10px; font-size: clamp(27.5px, 5.7vw, 40px); line-height: 1.28; letter-spacing: -.03em; }
 .subtitle { margin: 0; color: var(--muted); line-height: 1.8; }
 .subtitle.left { margin-bottom: 22px; }
 .tabs { display: flex; gap: 8px; padding: 6px; margin-bottom: 16px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.7); }
@@ -57,8 +75,27 @@ h1 { margin-bottom: 10px; font-size: clamp(27.5px, 5.7vw, 40px); line-height: 1.
 .section-heading h2 { margin: 0; font-size: 23px; }
 .medal { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 14px; background: var(--yellow); color: var(--yellow-deep); font-size: 22px; }
 .levels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 27px; }
-.level { padding: 12px 8px; border: 1px solid var(--line); border-radius: 13px; background: var(--surface-soft); color: var(--green-deep); cursor: pointer; font: 18px "Jua", sans-serif; transition: .15s ease; }
-.level small { display: block; margin-top: 3px; color: var(--muted); font: 11px "Gowun Dodum", sans-serif; }
+
+.level {
+  padding: 12px 8px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--surface-soft);
+  color: var(--green-deep);
+  cursor: pointer;
+  font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 18px;
+  transition: .15s ease;
+}
+
+.level small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 11px;
+}
+
 .level:hover { border-color: var(--green); transform: translateY(-1px); }
 .level.active { border-color: var(--green-dark); background: var(--green-pale); color: var(--green-dark); box-shadow: inset 0 0 0 1px var(--green-dark); }
 .progress-info { margin-bottom: 8px; color: var(--muted); font-size: 12px; }
@@ -66,7 +103,6 @@ h1 { margin-bottom: 10px; font-size: clamp(27.5px, 5.7vw, 40px); line-height: 1.
 .progress { height: 8px; overflow: hidden; margin-bottom: 26px; border-radius: 9px; background: #edf1e8; }
 .progress-bar { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--green), var(--green-dark)); transition: width .25s ease; }
 .word-area { padding: 23px 16px 20px; border: 1px solid var(--line); border-radius: 17px; background: var(--surface-soft); text-align: center; }
-.badge { display: inline-block; padding: 5px 10px; border-radius: 20px; background: var(--green-pale); color: var(--green-dark); font-size: 11px; font-weight: bold; }
 .word { margin-top: 13px; font-size: clamp(37px, 9vw, 51px); font-weight: bold; letter-spacing: .04em; }
 .reading { margin-top: 2px; color: var(--muted); font-size: 16px; }
 .question { margin: 17px 0 0; color: var(--green-deep); font-size: 14px; }
@@ -85,8 +121,14 @@ h1 { margin-bottom: 10px; font-size: clamp(27.5px, 5.7vw, 40px); line-height: 1.
 .full-width { width: 100%; }
 .spaced { margin-top: 10px; }
 .feedback { margin: 0 0 17px; padding: 17px; border-radius: 14px; background: var(--green-pale); line-height: 1.75; }
-.feedback[hidden], [hidden] { display: none !important; }
-.feedback-title { margin: 0 0 5px; color: var(--green-dark); font: 20px "Jua", sans-serif; }
+
+.feedback-title {
+  margin: 0 0 5px;
+  color: var(--green-dark);
+  font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 20px;
+}
+
 .feedback-title.bad { color: var(--red); }
 .example { margin-top: 12px; padding-top: 11px; border-top: 1px solid rgba(75,133,47,.16); font-size: 14px; }
 .example-translation { color: var(--muted); }
@@ -105,12 +147,13 @@ h1 { margin-bottom: 10px; font-size: clamp(27.5px, 5.7vw, 40px); line-height: 1.
 .empty-state { padding: 24px 16px; border-radius: 14px; background: var(--surface-soft); color: var(--muted); line-height: 1.8; text-align: center; }
 .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
 .stat { display: grid; gap: 5px; place-items: center; padding: 19px 8px; border: 1px solid var(--line); border-radius: 17px; background: white; box-shadow: var(--shadow); }
-.stat strong { color: var(--green-dark); font: 27px "Jua", sans-serif; }
+.stat strong { color: var(--green-dark); font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; font-size: 27px; }
 .stat span { color: var(--muted); font-size: 12px; }
 .stats-message { padding: 17px; border-radius: 14px; background: var(--surface-soft); line-height: 1.9; }
 footer { padding: 25px 5px 0; color: var(--muted); font-size: 12px; text-align: center; }
 footer span { color: var(--green-dark); }
 .page[hidden] { display: none; }
+
 @media (max-width: 560px) {
   .app { width: min(100% - 22px, 780px); padding-top: 19px; }
   .topbar { margin-bottom: 31px; }
@@ -133,7 +176,6 @@ footer span { color: var(--green-dark); }
   border-radius: 17px;
   background: transparent;
   object-fit: contain;
-
 }
 
 .keroro-icon {
@@ -164,13 +206,8 @@ footer span { color: var(--green-dark); }
   object-fit: contain;
 }
 
-.logo {
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1.3;
-}
-
+/* 일본어도 둥근 글꼴 대신 고딕 계열로 표시 */
 .word,
 .reading {
-  font-family: "M PLUS Rounded 1c", Arial, sans-serif;
+  font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif !important;
 }
