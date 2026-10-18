@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3f7e9">
+
+  <title>케로로와 일본어 | 퍼렁별 단어 정복 작전</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <img
+          class="keroro-icon"
+          src="keroro.png"
+          alt="케로로 얼굴"
+        >
+        <div class="logo">
+          케로로와 일본어
+          <small>작전명: 퍼렁별 단어 완전 정복!</small>
+        </div>
+      </div>
+
+      <time class="date" id="today"></time>
+    </header>
+
+    <section class="hero" aria-labelledby="mainTitle">
+      <p class="eyebrow">KERORO PLATOON · LANGUAGE TRAINING</p>
+
+      <h1 id="mainTitle">
+        퍼렁별 일본어 정복 작전을<br class="desktop-break">
+        개시하겠습니다!
+      </h1>
+
+      <p class="subtitle">
+        후후후… 이 정도 단어 훈련은 식은 죽 먹기이지 말입니다!
+        <span aria-hidden="true">🫡</span>
+      </p>
+    </section>
+
+    <nav class="tabs" aria-label="학습 메뉴">
+      <button class="tab active" id="quizTab" type="button" data-tab="quiz">
+        📝 단어 퀴즈
+      </button>
+
+      <button class="tab" id="wrongTab" type="button" data-tab="wrong">
+        📔 작전 실패 기록
+        <span class="count" id="wrongCount">0</span>
+      </button>
+
+      <button class="tab" id="statsTab" type="button" data-tab="stats">
+        📊 작전 성공 보고서
+      </button>
+    </nav>
+
+    <!-- 단어 퀴즈 -->
+    <section id="quizPage" class="page">
+      <div class="card quiz-card">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">TODAY'S TRAINING</p>
+            <h2>훈련 레벨을 선택하십시오</h2>
+          </div>
+          <span class="medal" aria-hidden="true">★</span>
+        </div>
+
+        <div class="levels" role="group" aria-label="JLPT 레벨">
+          <button
+            class="level"
+            type="button"
+            data-level="N3"
+            aria-pressed="false"
+          >
+            N3
+            <small>기초 작전</small>
+          </button>
+
+          <button
+            class="level active"
+            type="button"
+            data-level="N2"
+            aria-pressed="true"
+          >
+            N2
+            <small>실전 작전</small>
+          </button>
+
+          <button
+            class="level"
+            type="button"
+            data-level="N1"
+            aria-pressed="false"
+          >
+            N1
+            <small>정예 작전</small>
+          </button>
+        </div>
+
+        <div class="progress-info">
+          <span id="progressLabel">오늘의 훈련 · N2</span>
+          <span id="progressCount">0 / 10</span>
+        </div>
+
+        <div
+          class="progress"
+          role="progressbar"
+          aria-label="훈련 진행률"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div id="questionArea" class="question-area">
+          <div class="word-area">
+            <span class="badge" id="wordBadge">JLPT N2 · 단어</span>
+            <div class="word" id="word">慎重</div>
+            <div class="reading" id="reading">しんちょう</div>
+
+            <p class="question">
+              이 단어의 뜻을 골라 주십시오. 작전 개시입니다!
+            </p>
+          </div>
+
+          <div
+            class="choices"
+            id="choices"
+            aria-label="정답 선택지"
+          ></div>
+
+          <!-- 정답 및 오답 피드백 -->
+          <div
+            class="feedback"
+            id="feedback"
+            aria-live="polite"
+            hidden
+          >
+            <h3 class="feedback-title" id="feedbackTitle">
+              <span id="feedbackMessage"></span>
+              <img
+                id="cryingKeroro"
+                class="crying-keroro"
+                src="keroro-crying.png"
+                alt="우는 케로로"
+                hidden
+              >
+            </h3>
+
+            <div id="feedbackText"></div>
+            <div class="example" id="example"></div>
+          </div>
+
+          <button
+            class="primary full-width"
+            id="nextButton"
+            type="button"
+            disabled
+          >
+            정답을 선택해 주십시오
+          </button>
+        </div>
+
+        <!-- 훈련 완료 화면 -->
+        <div
+          id="completeArea"
+          class="complete-area"
+          hidden
+          aria-live="polite"
+        >
+          <div class="complete-icon" aria-hidden="true">🚀</div>
+          <h2 id="completeTitle">오늘의 작전이 종료되었습니다!</h2>
+          <p id="completeText"></p>
+
+          <button class="primary" id="restartButton" type="button">
+            같은 레벨로 다시 훈련
+          </button>
+
+          <button
+            class="secondary"
+            id="reviewFromComplete"
+            type="button"
+            hidden
+          >
+            오답 복습 작전 시작
+          </button>
+        </div>
+      </div>
+
+      <p class="helper-note">
+        오늘의 기본 훈련은 최대 10문제입니다.
+        단어가 부족한 레벨은 보유한 단어만 출제됩니다.
+      </p>
+    </section>
+
+    <!-- 오답 노트 -->
+    <section id="wrongPage" class="page" hidden>
+      <div class="card">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">RETRY MISSION</p>
+            <h2>작전 실패 기록 📔</h2>
+          </div>
+          <span class="medal" aria-hidden="true">↻</span>
+        </div>
+
+        <p class="subtitle left">
+          놓친 단어는 여기에 기록해 두겠습니다.<br>
+          복습 작전으로 다시 익히는 것입니다!
+        </p>
+
+        <div id="wrongList" class="wrong-list"></div>
+
+        <button
+          class="primary full-width"
+          id="reviewButton"
+          type="button"
+        >
+          오답 단어 다시 훈련
+        </button>
+
+        <button
+          class="secondary full-width spaced"
+          id="clearWrongButton"
+          type="button"
+        >
+          오답 기록 비우기
+        </button>
+      </div>
+    </section>
+
+    <!-- 학습 기록 -->
+    <section id="statsPage" class="page" hidden>
+      <div class="stats-grid">
+        <div class="stat">
+          <strong id="totalAnswered">0</strong>
+          <span>총 풀이 수</span>
+        </div>
+
+        <div class="stat">
+          <strong id="accuracy">0%</strong>
+          <span>정답률</span>
+        </div>
+
+        <div class="stat">
+          <strong id="mastered">0</strong>
+          <span>맞힌 단어 수</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MISSION REPORT</p>
+            <h2>일본어 정복 작전 보고서</h2>
+          </div>
+          <span class="medal" aria-hidden="true">✦</span>
+        </div>
+
+        <p class="subtitle left">
+          지금까지의 훈련 성과를 보고하겠습니다!<br>
+          꾸준한 훈련으로 실력을 키우는 것입니다.
+        </p>
+
+        <div id="statsMessage" class="stats-message"></div>
+      </div>
+    </section>
+
+    <footer>
+      오늘도 훈련 수고 많으셨습니다! 내일의 작전도 계속됩니다.
+      <span>ケロケロリ〜</span>
+    </footer>
+  </main>
+</body>
+</html>
