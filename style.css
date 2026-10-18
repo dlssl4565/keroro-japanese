@@ -21,8 +21,9 @@ body {
   min-height: 100vh;
   color: var(--green-deep);
   background: radial-gradient(ellipse at 90% 5%, rgba(245, 231, 168, .35), transparent 28rem), var(--page);
-  font-family: "Gowun Dodum", "Malgun Gothic", sans-serif;
+  font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
 }
+
 button { font: inherit; }
 button:focus-visible { outline: 3px solid #d3a91f; outline-offset: 3px; }
 .app { width: min(780px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 24px; }
@@ -30,14 +31,26 @@ button:focus-visible { outline: 3px solid #d3a91f; outline-offset: 3px; }
 .topbar { margin-bottom: 40px; }
 .brand { justify-content: flex-start; gap: 12px; }
 .brand-mark { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 17px; background: var(--green-pale); font-size: 27px; }
-.logo { font: 25px/1.15 "Jua", sans-serif; }
+
+
+.logo {
+  font-family: "Mochiy Pop One", "Jua", sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
 .logo small { display: block; margin-top: 5px; color: var(--muted); font: 12px "Gowun Dodum", sans-serif; }
 .date { color: var(--muted); font-size: 13px; }
 .hero { margin-bottom: 27px; }
 .eyebrow { margin: 0 0 8px; color: var(--green-dark); font-size: 10px; font-weight: bold; letter-spacing: .15em; }
 h1, h2, h3, p { margin-top: 0; }
-h1, h2 { font-family: "Jua", sans-serif; }
-h1 { margin-bottom: 10px; font-size: clamp(29px, 6vw, 42px); line-height: 1.28; letter-spacing: -.03em; }
+
+h1, h2 {
+  font-family: Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+
+h1 { margin-bottom: 10px; font-size: clamp(27.5px, 5.7vw, 40px); line-height: 1.28; letter-spacing: -.03em; }
 .subtitle { margin: 0; color: var(--muted); line-height: 1.8; }
 .subtitle.left { margin-bottom: 22px; }
 .tabs { display: flex; gap: 8px; padding: 6px; margin-bottom: 16px; border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.7); }
@@ -154,4 +167,10 @@ footer span { color: var(--green-dark); }
   margin: 0 auto;
   border-radius: 20px;
   object-fit: contain;
+}
+
+
+.word,
+.reading {
+  font-family: "M PLUS Rounded 1c", Arial, sans-serif;
 }
